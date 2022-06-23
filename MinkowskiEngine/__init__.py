@@ -105,7 +105,7 @@ from MinkowskiConvolution import (
     MinkowskiGenerativeConvolutionTranspose,
 )
 
-
+from MinkowskiDepthwiseConvolution import MinkowskiDepthwiseConvolution
 from MinkowskiChannelwiseConvolution import MinkowskiChannelwiseConvolution
 
 from MinkowskiPooling import (

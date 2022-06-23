@@ -112,6 +112,37 @@ std::pair<at::Tensor, at::Tensor> ConvolutionBackwardGPU(
     CoordinateMapKey *p_in_map_key,                    //
     CoordinateMapKey *p_out_map_key,                   //
     gpu_manager_type<coordinate_type, TemplatedAllocator> *p_map_manager);
+
+template <typename coordinate_type,
+          template <typename C> class TemplatedAllocator>
+at::Tensor DepthwiseConvolutionForwardGPU(
+    at::Tensor const &in_feat,                         //
+    at::Tensor const &kernel,                          //
+    default_types::stride_type const &kernel_size,     //
+    default_types::stride_type const &kernel_stride,   //
+    default_types::stride_type const &kernel_dilation, //
+    RegionType::Type const region_type,                //
+    at::Tensor const &offset,                          //
+    ConvolutionMode::Type const convolution_mode,      //
+    CoordinateMapKey *p_in_map_key,                    //
+    CoordinateMapKey *p_out_map_key,                   //
+    gpu_manager_type<coordinate_type, TemplatedAllocator> *p_map_manager);
+
+template <typename coordinate_type,
+          template <typename C> class TemplatedAllocator>
+std::pair<at::Tensor, at::Tensor> DepthwiseConvolutionBackwardGPU(
+    at::Tensor const &in_feat,                         //
+    at::Tensor &grad_out_feat,                         //
+    at::Tensor const &kernel,                          //
+    default_types::stride_type const &kernel_size,     //
+    default_types::stride_type const &kernel_stride,   //
+    default_types::stride_type const &kernel_dilation, //
+    RegionType::Type const region_type,                //
+    at::Tensor const &offset,                          //
+    ConvolutionMode::Type const convolution_mode,      //
+    CoordinateMapKey *p_in_map_key,                    //
+    CoordinateMapKey *p_out_map_key,                   //
+    gpu_manager_type<coordinate_type, TemplatedAllocator> *p_map_manager);
 #endif
 
 /*************************************
@@ -583,6 +614,14 @@ void instantiate_gpu_func(py::module &m, const std::string &dtypestr) {
 
   m.def((std::string("ConvolutionBackwardGPU") + dtypestr).c_str(),
         &minkowski::ConvolutionBackwardGPU<coordinate_type, TemplatedAllocator>,
+        py::call_guard<py::gil_scoped_release>());
+  
+  m.def((std::string("DepthwiseConvolutionForwardGPU") + dtypestr).c_str(),
+        &minkowski::DepthwiseConvolutionForwardGPU<coordinate_type, TemplatedAllocator>,
+        py::call_guard<py::gil_scoped_release>());
+  
+  m.def((std::string("DepthwiseConvolutionBackwardGPU") + dtypestr).c_str(),
+        &minkowski::DepthwiseConvolutionBackwardGPU<coordinate_type, TemplatedAllocator>,
         py::call_guard<py::gil_scoped_release>());
 
   m.def((std::string("ConvolutionTransposeForwardGPU") + dtypestr).c_str(),

@@ -246,6 +246,8 @@ SOURCE_SETS = {
             "coordinate_map_gpu.cu",
             "convolution_kernel.cu",
             "convolution_gpu.cu",
+            "depthwise_convolution_kernel.cu",
+            "depthwise_convolution_gpu.cu",
             "convolution_transpose_gpu.cu",
             "pooling_avg_kernel.cu",
             "pooling_max_kernel.cu",

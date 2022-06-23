@@ -5,6 +5,7 @@
 *.swn
 *.pyc
 
+examples/*
 build/
 objs/
 dist/
