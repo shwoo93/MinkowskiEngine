@@ -1,5 +1,5 @@
 ### [Note]
-This repo contains a new sparse convolution kernel for depth-wise convolutions that supports GPU forward and backward.
+This repo contains a new custom CUDA kernel for depth-wise convolutions, which the original MinkowskiEngine does not support.
 
 [pypi-image]: https://badge.fury.io/py/MinkowskiEngine.svg
 [pypi-url]: https://pypi.org/project/MinkowskiEngine/
