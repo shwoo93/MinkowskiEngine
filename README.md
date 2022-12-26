@@ -1,3 +1,6 @@
+### [Note]
+This repo contains a new sparse convolution kernel for depth-wise convolutions that supports GPU forward and backward.
+
 [pypi-image]: https://badge.fury.io/py/MinkowskiEngine.svg
 [pypi-url]: https://pypi.org/project/MinkowskiEngine/
 [pypi-download]: https://img.shields.io/pypi/dm/MinkowskiEngine
