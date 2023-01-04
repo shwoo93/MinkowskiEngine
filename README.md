@@ -1,3 +1,6 @@
+### [Note]
+This repo contains a new custom CUDA kernel for depth-wise convolutions, which the original MinkowskiEngine does not support.
+
 [pypi-image]: https://badge.fury.io/py/MinkowskiEngine.svg
 [pypi-url]: https://pypi.org/project/MinkowskiEngine/
 [pypi-download]: https://img.shields.io/pypi/dm/MinkowskiEngine
